@@ -12,7 +12,7 @@ namespace WS.Dima.Core.Models
         public ETransactionType Type { get; set; } = ETransactionType.Withdraw;
         public string UserId { get; set; } = string.Empty;
         public long CategoryId { get; set; }
-        public Category Category { get; set; } = new Category();
+        public Category Category { get; set; } = null!;
 
     }
 }

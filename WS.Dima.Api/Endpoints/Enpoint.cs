@@ -1,5 +1,6 @@
 ﻿using WS.Dima.Api.Common.Api;
 using WS.Dima.Api.Endpoints.Categories;
+using WS.Dima.Api.Endpoints.Transactions;
 
 namespace WS.Dima.Api.Endpoints
 {
@@ -17,6 +18,14 @@ namespace WS.Dima.Api.Endpoints
                 .MapEndPoint<DeleteCategoryEndpoint>()
                 .MapEndPoint<GetByIdCategoryEndpoint>()
                 .MapEndPoint<GetAllCategoriesEndpoint>();
+
+            Endpoints.MapGroup("v1/transactions")
+                .WithTags("Transactions")
+                .MapEndPoint<CreateTransactionEndpoint>()
+                .MapEndPoint<UpdateTransactionEndpoint>()
+                .MapEndPoint<DeleteTransactionEndpoint>()
+                .MapEndPoint<GetByIdTransactionEndpoint>()
+                .MapEndPoint<GetByPeriodTransactionsEndpoint>();
         }
 
         private static IEndpointRouteBuilder MapEndPoint<TEndpoint>(this IEndpointRouteBuilder app)
