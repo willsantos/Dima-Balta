@@ -13,6 +13,7 @@ namespace WS.Dima.Api.Endpoints
 
             Endpoints.MapGroup("/v1/categories")
                 .WithTags("Categories")
+                .RequireAuthorization()
                 .MapEndPoint<CreateCategoryEndpoint>()
                 .MapEndPoint<UpdateCategoryEndpoint>()
                 .MapEndPoint<DeleteCategoryEndpoint>()
@@ -21,6 +22,7 @@ namespace WS.Dima.Api.Endpoints
 
             Endpoints.MapGroup("v1/transactions")
                 .WithTags("Transactions")
+                .RequireAuthorization()
                 .MapEndPoint<CreateTransactionEndpoint>()
                 .MapEndPoint<UpdateTransactionEndpoint>()
                 .MapEndPoint<DeleteTransactionEndpoint>()

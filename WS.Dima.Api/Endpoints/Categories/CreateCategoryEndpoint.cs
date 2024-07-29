@@ -1,4 +1,5 @@
-﻿using WS.Dima.Api.Common.Api;
+﻿using System.Security.Claims;
+using WS.Dima.Api.Common.Api;
 using WS.Dima.Core.Handlers;
 using WS.Dima.Core.Models;
 using WS.Dima.Core.Requests.Categories;
@@ -18,8 +19,9 @@ namespace WS.Dima.Api.Endpoints.Categories
             .Produces<Response<Category?>>(StatusCodes.Status400BadRequest);
 
 
-        private static async Task<IResult> HandleAsync(ICategoryHandler handler, CreateCategoryRequest request)
+        private static async Task<IResult> HandleAsync(ICategoryHandler handler, CreateCategoryRequest request, ClaimsPrincipal user)
         {
+            request.UserId = user.Identity?.Name ?? string.Empty;
             var result = await handler.CreateAsync(request);
             return result.IsSucess
                 ? TypedResults.Created($"/{result.Data?.Id}", result)

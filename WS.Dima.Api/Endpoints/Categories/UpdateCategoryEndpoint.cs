@@ -1,4 +1,5 @@
-﻿using WS.Dima.Api.Common.Api;
+﻿using System.Security.Claims;
+using WS.Dima.Api.Common.Api;
 using WS.Dima.Core.Handlers;
 using WS.Dima.Core.Models;
 using WS.Dima.Core.Requests.Categories;
@@ -20,10 +21,11 @@ namespace WS.Dima.Api.Endpoints.Categories
         private static async Task<IResult> HandleAsync(
             ICategoryHandler handler,
             UpdateCategoryRequest request,
+            ClaimsPrincipal user,
             long id
             )
         {
-            request.UserId = "teste@wilsonsantos.com.br";
+            request.UserId = user.Identity?.Name ?? string.Empty;
             request.Id = id;
 
             var result = await handler.UpdateAsync(request);

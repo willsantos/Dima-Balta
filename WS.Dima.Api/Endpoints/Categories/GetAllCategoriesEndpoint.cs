@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc;
 using WS.Dima.Api.Common.Api;
 using WS.Dima.Core;
 using WS.Dima.Core.Handlers;
@@ -20,13 +21,14 @@ namespace WS.Dima.Api.Endpoints.Categories
 
         private static async Task<IResult> HandleAsync(
            ICategoryHandler handler,
+           ClaimsPrincipal user,
            [FromQuery] int pageNumber = Configuration.DefaultPageNumber,
            [FromQuery] int pageSize = Configuration.DefaultPageSize
            )
         {
             var request = new GetAllCategoriesRequest
             {
-                UserId = "teste@wilsonsantos.com.br",
+                UserId = user.Identity?.Name ?? string.Empty,
                 PageNumber = pageNumber,
                 PageSize = pageSize
             };
