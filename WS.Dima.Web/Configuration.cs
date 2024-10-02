@@ -5,6 +5,9 @@ namespace WS.Dima.Web;
 
 public static class Configuration
 {
+    public const string HttpClientName = "dima";
+    public static string BackendUrl { get; set; }
+    
     public static MudTheme Theme = new MudTheme()
     {
         Typography = new Typography

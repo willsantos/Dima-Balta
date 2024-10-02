@@ -9,7 +9,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="8.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.7" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
     <PackageReference Include="MudBlazor" Version="6.19.1" />
   </ItemGroup>
 
@@ -22,7 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Identity\" />
+    <ProjectReference Include="..\WS.Dima.Core\WS.Dima.Core.csproj" />
   </ItemGroup>
+
 
 </Project>
